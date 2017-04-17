@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "define.h"
 
 
 int main() {
     List L;
-    int count;
+    int count = 5;
+
+    CreateListHead(L,count);
+    DisplayList(L);
+    /*
     printf("############InitList####################\n");
     InitList(L);
     printf("The address of List L is %p\n",L);
@@ -13,6 +18,7 @@ int main() {
     scanf("%d",&count);
     printf("The number you have typed is %d\n",count);
     CreateList( L, count);
+     */
     return 0;
 }
 
@@ -47,4 +53,31 @@ void CreateList( List *L, ElementType n)
 //        printf("\n n now is %d\n",n);
     }
 
+}
+
+void CreateListHead(List *L, int n)
+{
+    List p;
+    int i;
+    srand(time(0));
+    *L = (List)malloc(sizeof(Node));
+    (*L)->Next = NULL;
+    for ( i=0; i<n; i++)
+    {
+        p = (List)malloc(sizeof(Node));
+        p->Element = rand()%100+1;
+        p->Next = (*L)->Next;
+        (*L)->Next = p;
+    }
+}
+void DisplayList( List *L)
+{
+
+    List p = (*L)->Next;
+    while(p != NULL)
+    {
+        printf("%d",p->Element);
+        p = p->Next;
+    }
+    printf("\n###");
 }
