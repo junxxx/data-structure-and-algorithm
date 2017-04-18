@@ -4,10 +4,9 @@ typedef struct Node *PtrToNode;
 typedef PtrToNode List;
 typedef PtrToNode Position;
 
-void InitList( List *L);
-void CreateList( List *L, ElementType count);
-void CreateListHead( List *L, int n);
-void DisplayList( List *L);
+List InitList();
+void CreateListHead( List L, int n);
+void DisplayList( List L);
 
 #endif      /* _List_H*/
 
