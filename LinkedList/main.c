@@ -5,47 +5,18 @@
 
 int main()
 {
+    Position p;
     int count = 5;
     List L = InitList();
     CreateListHead(L, count);
     DisplayList(L);
+    Insert(88,L,L->Next);
+    DisplayList(L);
+    Insert(22,L,L);
+    DisplayList(L);
+    p = Find(88,L);
+    printf("\nElement 88's address in List is:%p",p);
+    Delete(88,L);
+    DisplayList(L);
     return 0;
-}
-/*init linked list*/
-List InitList()
-{
-
-    List L = (List)malloc(sizeof(Node));
-    if(L == NULL)
-    {
-        printf("\n Failed to malloc memory to init List!\n");
-        exit(1);
-    }
-    L->Next = NULL;
-    return L;
-}
-/*create*/
-void CreateListHead(List L, int n)
-{
-    List p;
-    int i;
-    srand(time(0));
-    for ( i=0; i<n; i++)
-    {
-        p = (List)malloc(sizeof(Node));
-        p->Element = rand()%100+1;
-        p->Next = L->Next;
-        L->Next = p;
-    }
-}
-void DisplayList( List L)
-{
-
-    Position p = L->Next;
-    while(p != NULL)
-    {
-        printf("%d-->",p->Element);
-        p = p->Next;
-    }
-    printf("End of list");
 }
