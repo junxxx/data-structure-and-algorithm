@@ -37,7 +37,12 @@ Stack CreateStack( void )
 
     S = malloc( sizeof( struct StackNode ) );
     if( S == NULL )
+    {
+        printf("Out of space!");
         exit(0);
+    }
+    /*！！！注意初始化时栈时，一定要给S->Next赋值NULL*/
+    S->Next = NULL;
     MakeEmpty( S );
     return S;
 }
@@ -45,11 +50,16 @@ Stack CreateStack( void )
 void MakeEmpty( Stack S )
 {
     if( S == NULL )
+    {
+        printf("Error Stack NULL");
         exit(0);
+    }
     else
-        while( !IsEmpty( S ) )
+    {
+        while( !IsEmpty( S ) ){
             Pop( S );
-
+        }
+    }
 }
 
 void Pop( Stack S )
@@ -57,7 +67,10 @@ void Pop( Stack S )
     PtrToStackNode FirstCell;
 
     if( IsEmpty( S ) )
+    {
+        printf("Pop Empty Stack\n");
         exit(0);
+    }
     else
     {
         FirstCell = S->Next;
@@ -72,7 +85,10 @@ void Push( ElementType E, Stack S )
 
     TmpCell = malloc( sizeof( struct StackNode ) );
     if( TmpCell == NULL )
+    {
+        printf("Failed to malloc space for Node");
         exit(0);
+    }
     else
     {
         TmpCell->Element = E;
@@ -87,9 +103,10 @@ void DisplayStack( Stack S )
         exit(0);
     else
     {
-        while( S->Next != NULL){
-            printf("echo something");
-            printf("***%d***",S->Element);
+        /*栈顶指针，不含元素，要特殊处理一下*/
+        S = S->Next;
+        while( S != NULL){
+            printf("***  %d  ***\n",S->Element);
             S = S->Next;
         }
     }

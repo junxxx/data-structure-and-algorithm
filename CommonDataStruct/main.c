@@ -30,7 +30,14 @@ int main()
     printf("输出栈中元素\n");
     Push(9,S);
     DisplayStack( S );
-
+    printf("清空栈\n");
+    MakeEmpty(S);
+    DisplayStack( S );
+    printf("入栈7,6,21\n");
+    Push(7,S);
+    Push(6,S);
+    Push(21,S);
+    DisplayStack( S );
     return 0;
 }
 
