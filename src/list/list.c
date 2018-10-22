@@ -19,7 +19,7 @@ void DisplayList(SqList L)
 
 int main()
 {
-	SqList L;
+    SqList L;
     int inited = FALSE;
     int list_len, choose; 
     int insertP, deleteP, insertItem;
