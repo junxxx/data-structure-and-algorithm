@@ -1,9 +1,5 @@
-#include <stdio.h>
-#define MAXSIZE 20
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
+#include "../lib/common.h"
+#include <stdlib.h>
 
 typedef int ElemType;
 typedef int Status;
@@ -14,17 +10,27 @@ typedef struct
 	int length;
 }SqList;
 
+Status InitList(SqList *L);		//init list
+SqList Create(SqList L, int);
+Status ClearList(SqList *L);
+Status visit(ElemType c);
+Status ListTraverse(SqList L);
+Status ListInsert(SqList *L, int i, ElemType e);
+Status ListDelete(SqList *L, int p);
+
 Status InitList(SqList *L)		//init list
 {
 	L->length=0;
 	return OK;
 }
 
-SqList Create(SqList L)
+SqList Create(SqList L, int len)
 {
 	int i;
+    if (len > MAXSIZE)
+        exit(1);
 	srand((unsigned)time(NULL));
-	for(i = 0; i < 10; i++)
+	for(i = 0; i < len; i++)
 	{
 		L.data[i] = rand()%100;
 		L.length++;
@@ -51,7 +57,6 @@ Status ListTraverse(SqList L)
 		visit(L.data[i]);
 	printf("\n");
 	return OK;
-
 }
 
 Status ListInsert(SqList *L, int i, ElemType e)
@@ -72,26 +77,15 @@ Status ListInsert(SqList *L, int i, ElemType e)
 	return OK;
 }
 
-int main()
+Status ListDelete(SqList *L, int p)
 {
-	SqList L;
-	ElemType e;
-	Status i;
-
-	i = InitList(&L);
-	printf("初始化成功，L.length=%d\n",L.length);
-	printf("遍历线性表\n");
-	ListTraverse(L);
-	L = Create(L);
-	printf("线性表的长度为：%d\n",L.length);
-	printf("创建随机链表：L.data=");
-	ListTraverse(L);
-//	i = ClearList(&L);
-//	printf("清空Ｌ后：L.length=%d\n",L.length);
-	ListInsert(&L,2,88);
-	printf("将88插入第二个位置之后的线性表：\n");
-	ListTraverse(L);
-
-	return 0;
+    int k;
+    if (L->length == MAXSIZE)
+        return ERROR;
+    if (p < 0 || p > L->length - 1)
+        return ERROR;
+    for (k = p; k < L->length - 1; k++)
+        L->data[k] = L->data[k+1];
+    L->length--;
+    return OK;
 }
-
