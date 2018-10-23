@@ -118,11 +118,6 @@ int delList(List L, int p)
 int getLen(List L)
 {
     int i = 0;
-    if(isEmpty(L))
-        return 0;
-    //head
-    i++;
-    L = L->next;
     while(L->next) {
         L = L->next;
         i++;
