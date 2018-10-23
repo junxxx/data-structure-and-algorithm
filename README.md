@@ -1,5 +1,7 @@
 ## This code is learning and practice data structrue in C language.
 
+### debug gdb
+
 ### errors
     redefinition 
     add condition compiler statement in header file
@@ -14,7 +16,7 @@
 ### List
 implement with both array and pointer
 
-### Quenen
+### Queue
 
 ### Stack
 
