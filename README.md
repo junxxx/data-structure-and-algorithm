@@ -12,6 +12,8 @@
 
     conflicting types for ‘isEmpty’  defer and implement not the same
 
+    Fatal Error. A fatal error is any error that causes a program to abort
+
 
 ### List
 implement with both array and pointer
