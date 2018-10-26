@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #ifndef __Tree_H
 typedef int ElementType;
 struct TreeNode;
@@ -11,6 +14,8 @@ Position FindMax(SearchTree T);
 SearchTree Insert(ElementType x, SearchTree T);
 SearchTree Delete(ElementType x, SearchTree T);
 ElementType Retrieve(Position p);
+void PrintTree(SearchTree T);
+int Height(SearchTree T);
 
 #endif
 
@@ -19,7 +24,7 @@ struct TreeNode
     ElementType data;
     SearchTree Left;
     SearchTree Right;
-}
+};
 
 SearchTree MakeEmpty(SearchTree T)
 {
@@ -112,3 +117,22 @@ SearchTree Delete(ElementType x, SearchTree T)
     }
     return T;
 }
+
+void PrintTree(SearchTree T)
+{
+    if (T != NULL)
+    {
+        PrintTree(T->Left);
+        printf("%d ", T->data);
+        PrintTree(T->Right);
+    }
+}
+
+int Height(SearchTree T)
+{
+    if (T == NULL)
+        return -1;
+    else
+        return 1 + MAX(Height(T->Left), Height(T->Right));
+}
+
