@@ -1,6 +1,6 @@
+#include "../lib/common.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #ifndef __Tree_H
 typedef int ElementType;
 struct TreeNode;

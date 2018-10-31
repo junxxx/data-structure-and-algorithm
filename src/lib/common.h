@@ -14,6 +14,7 @@
 #define FALSE 0
 #endif
 #define MAXSIZE 1024
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
 
 int get_integer(char *);
 
