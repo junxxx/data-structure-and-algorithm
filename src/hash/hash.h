@@ -1,3 +1,3 @@
-#ifndef _HASH_H
-#define _HASH_H
+typedef unsigned int Index;
 
+Index Hash(const char *, int);

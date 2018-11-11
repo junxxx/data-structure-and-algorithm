@@ -18,3 +18,8 @@
 
 int get_integer(char *);
 
+int is_prime(int);
+
+void FatalError(char *);
+
+int NextPrime(int prime);
