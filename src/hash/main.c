@@ -4,14 +4,13 @@
 int main()
 {
     int element = 66;
-    int TableSize = 1197;
+    int TableSize = 17;
     Position p;
 
     HashTable H = InitializeTable(TableSize);
     if (H == NULL)
     {
-        printf("init failed\n");
-        exit(1);
+        FatalError("\nInitializeTable failed\n");
     }
     Insert(66, H);
     p = Find(66, H);

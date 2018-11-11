@@ -75,10 +75,7 @@ Position Find(ElementType Key, HashTable H)
 {
     Position P;
     List L;
-    int index;
 
-    //bug here;
-    index = Hash(Key, H->TableSize);
     L = H->TheLists[Hash(Key, H->TableSize)];
     P = L->Next;
     /* the comparison depends on the element type */
