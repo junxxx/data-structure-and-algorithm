@@ -22,4 +22,6 @@ int is_prime(int);
 
 void FatalError(char *);
 
+void Error(char *);
+
 int NextPrime(int prime);

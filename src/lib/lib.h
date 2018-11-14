@@ -28,6 +28,11 @@ void FatalError(char *tips)
     exit(1);
 }
 
+void Error(char *s)
+{
+    printf("%s\n", s);
+}
+
 int NextPrime(int number)
 {
     while(!is_prime(++number))

@@ -1,10 +1,14 @@
+/*
 #include "hashSepC.h"
 #include "hashSepC.c"
+*/
+#include "hashQuad.h"
+#include "hashQuad.c"
 
 int main()
 {
     int element = 66;
-    int TableSize = 17;
+    int TableSize = 2017;
     Position p;
 
     HashTable H = InitializeTable(TableSize);

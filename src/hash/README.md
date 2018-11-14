@@ -20,7 +20,6 @@ Hash tables are also used to implement associative arrays and dynamic sets.
 * Quadratic Probing
 * Double Hashing
 
-
 #### Implemetation:
 
 hash(k, m) - m is size of hash table
