@@ -11,7 +11,7 @@ int main()
 {
     int test[10] = {92, 43, 14, 51, 84, 48, 32, 54, 23, 19};
     print_array(test, 10);
-    insertion_sort(test, 9);
+    insertion_sort(test, 10);
     print_array(test, 10);
     return 0;
 }
