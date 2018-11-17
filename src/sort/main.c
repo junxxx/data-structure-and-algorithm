@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "sort.h"
 
 void print_array(int a[], unsigned int n)
@@ -9,9 +11,23 @@ void print_array(int a[], unsigned int n)
 
 int main()
 {
-    int test[10] = {92, 43, 14, 51, 84, 48, 32, 54, 23, 19};
+    int i, test[10];
+    time_t t;
+    srand((unsigned)time(&t));
+    for (i = 0; i < 10; i++)
+    {
+        test[i] = rand() % 100;
+    }
+    //init random array
     print_array(test, 10);
     insertion_sort(test, 10);
+    print_array(test, 10);
+    for (i = 0; i < 10; i++)
+    {
+        test[i] = rand() % 100;
+    }
+    print_array(test, 10);
+    shell_sort(test, 10);
     print_array(test, 10);
     return 0;
 }

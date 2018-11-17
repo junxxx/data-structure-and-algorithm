@@ -11,3 +11,25 @@ void insertion_sort(int a[], unsigned int n)
         a[j] = tmp;
     }
 }
+
+/* shell sort */
+void shell_sort(int a[], int n)
+{
+    int i, j ,incremnt;
+    int tmp;
+    for (incremnt = n / 2; incremnt > 0; incremnt /= 2)
+    {
+        for ( i = incremnt; i < n; i++)
+        {
+            tmp = a[i];
+            for ( j = i; j >= incremnt; j-= incremnt)
+            {
+                if (tmp < a[j - incremnt])
+                    a[j] = a[j - incremnt];
+                else
+                    break;
+            }
+            a[j] = tmp;
+        }
+    }
+}
