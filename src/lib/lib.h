@@ -42,3 +42,10 @@ int NextPrime(int number)
 
     return number;
 }
+
+void swap(int *x, int *y)
+{
+    *y = *x ^ *y;
+    *x = *x ^ *y;
+    *y = *x ^ *y;
+}

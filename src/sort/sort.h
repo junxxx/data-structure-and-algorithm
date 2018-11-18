@@ -1,4 +1,6 @@
 /* insert sort */
+#define LeftChild(i) (2 * (i) + 1)
+typedef int ElementType;
 void insertion_sort(int a[], unsigned int n)
 {
     unsigned int j, p;
@@ -31,5 +33,36 @@ void shell_sort(int a[], int n)
             }
             a[j] = tmp;
         }
+    }
+}
+
+void perc_down(ElementType A[], int i, int N)
+{
+    int Child;
+    ElementType Tmp;
+
+    for (Tmp = A[i]; LeftChild(i) < N; i = Child)
+    {
+        Child = LeftChild(i);
+        if (Child != N - 1 && A[Child +1] > A[Child])
+            Child++;
+        if (Tmp < A[Child])
+            A[i] = A[Child];
+        else
+            break;
+    }
+    A[i] = Tmp;
+}
+
+void heap_sort(ElementType A[], int N)
+{
+    int i;
+
+    for( i = N / 2; i >= 0; i--) /* build heap */
+        perc_down(A, i, N);
+    for (i = N - 1; i > 0; i--)
+    {
+        swap(&A[0], &A[i]);     /* Delete max*/
+        perc_down(A, 0, i);
     }
 }

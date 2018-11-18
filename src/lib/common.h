@@ -25,3 +25,5 @@ void FatalError(char *);
 void Error(char *);
 
 int NextPrime(int prime);
+
+void swap(int *, int *);
