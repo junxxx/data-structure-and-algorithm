@@ -45,5 +45,11 @@ int main()
     heap_sort(test, 10);
     printf("after heap_sort: ");
     print_array(test, 10);
+    init_array(test, 10);
+    printf("before m_sort: ");
+    print_array(test, 10);
+    merge_sort(test, 10);
+    printf("after m_sort: ");
+    print_array(test, 10);
     return 0;
 }
