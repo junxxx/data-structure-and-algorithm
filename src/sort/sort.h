@@ -1,5 +1,7 @@
 /* insert sort */
 #define LeftChild(i) (2 * (i) + 1)
+#define Cutoff (3)
+
 typedef int ElementType;
 void insertion_sort(int a[], unsigned int n)
 {
@@ -120,5 +122,55 @@ void merge_sort(ElementType A[], int N)
     }
     else
         FatalError("No space for tmp array!!!");
+}
+
+/* Return median of left, center, and right */
+/* Order these and hide the pivot */
+ElementType median3(ElementType A[], int left , int right)
+{
+    int center = (left + right) / 2;
+
+    if (A[left] > A[center])
+        swap(&A[left], &A[center]);
+    if (A[left] > A[right])
+        swap(&A[left], &A[right]);
+    if (A[center] > A[right])
+        swap(&A[center], &A[right]);
+
+    /* Invariant: A[left] <= A[center] <= A[right] */
+    
+    swap(&A[center], &A[right - 1]);    /* hide pivot */
+    return A[right - 1];                /* return pivot */
+}
+
+void q_sort(ElementType A[], int left, int right)
+{
+    int i, j;
+    ElementType pivot;
+
+    if (left + Cutoff <= right)
+    {
+        pivot = median3(A, left , right);
+        i = left, j = right - 1;
+        for (; ; )
+        {
+            while (A[++i] < pivot) {}
+            while (A[--j] > pivot) {}
+            if ( i < j)
+                swap(&A[i], &A[j]);
+            else
+                break;
+        }
+        swap(&A[i], &A[right - 1]);     /* restore pivot */
+
+        q_sort(A, left, i - 1);
+        q_sort(A, i + 1, right);
+    }
+    else                                /* Do an insertion sort on the subarray */
+        insertion_sort(A, right - left + 1);
+}
+void quick_sort(ElementType A[], int N)
+{
+    q_sort(A, 0, N - 1);
 }
 

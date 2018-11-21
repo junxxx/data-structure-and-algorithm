@@ -14,42 +14,69 @@ void print_array(int a[], unsigned int n)
 /**
  * init random array
  */
-void init_array(int A[], int n)
+int* init_array(int *A, int size)
 {
-    for (int i = 0; i < n; i++)
+    time_t t;
+    int min ,max;
+    min = get_integer("The min number in the array");
+    max = get_integer("Max number!");
+
+    A = (int*)malloc(size * sizeof(int));
+    if (A == NULL)
+        FatalError("Out of space!");
+    srand((unsigned)time(&t));
+    for (int i = 0; i < size; i++)
     {
-       A[i] = rand() % 100;
+       A[i]= rand() % (max - min + 1) + min;
     }
+    return A;
 }
+
+int menu()
+{
+    printf("#########----------###########\n");
+    printf("1).Insertion sort\n");
+    printf("2).Shell sort\n");
+    printf("3).Heap sort\n");
+    printf("4).Merge sort\n");
+    printf("5).Quick sort\n");
+    printf("#########----------###########\n");
+    return get_integer("You choose:");
+}
+
 
 int main()
 {
-    int i, test[10];
-    time_t t;
-    srand((unsigned)time(&t));
-    init_array(test, 10);
-    printf("before insertion_sort: ");
-    print_array(test, 10);
-    insertion_sort(test, 10);
-    printf("array after insertion_sort: ");
-    print_array(test, 10);
-    init_array(test, 10);
-    printf("before shell_sort: ");
-    print_array(test, 10);
-    shell_sort(test, 10);
-    printf("after shell_sort: ");
-    print_array(test, 10);
-    init_array(test, 10);
-    printf("before heap_sort: ");
-    print_array(test, 10);
-    heap_sort(test, 10);
-    printf("after heap_sort: ");
-    print_array(test, 10);
-    init_array(test, 10);
-    printf("before m_sort: ");
-    print_array(test, 10);
-    merge_sort(test, 10);
-    printf("after m_sort: ");
-    print_array(test, 10);
-    return 0;
+    int select, size, *test;
+    while (select = menu())
+    {
+        size = get_integer("Array size");
+        while(size <= 0)
+            size = get_integer("Array size must bigger then zero");
+
+        test = init_array(test, size);
+
+        printf("Before sort:\n");
+        print_array(test, size);
+        switch (select) {
+            case 1:
+                insertion_sort(test,size);
+                break;
+            case 2:
+                shell_sort(test, size);
+                break;
+            case 3:
+                heap_sort(test, size);
+                break;
+            case 4:
+                merge_sort(test, size);
+                break;
+            case 5:
+                quick_sort(test, size);
+                break;
+        }
+        printf("After sort:\n");
+        print_array(test, size);
+    }
+   return 0;
 }
