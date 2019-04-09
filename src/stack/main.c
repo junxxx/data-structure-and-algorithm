@@ -1,21 +1,23 @@
-#include "arraystack.h"
-
-unsigned int top, length;
-int stack[MAXLENGTH];
+#include "stackarray.h"
 
 /* test stack implement with array */
 int main(int argc, const char** argv)
 {
-    if (isEmpty()){
-        push(3);
+    stack s = createStack(20);
+    if (isEmpty(s)){
+        push(s,3);
     }
-    tralver();
-    push(1);
-    push(5);
-    tralver();
-    while (!isEmpty()){
-        printf("pop %d\n", pop());
+    push(s,1);
+    push(s,5);
+    while (!isEmpty(s)) {
+        printf("pop %d\n", topAndPop(s));
     }
-    tralver();
+    printf("inint another stack s2\n");
+    stack s2 = createStack(100);
+    push(s2, 101);
+    printf("top %d\n", top(s2));
+    pop(s2);
+    push(s2, 3);
+    printf("top %d\n", top(s2));
     return 0;
 }
